@@ -38,24 +38,94 @@ changeText();
 setInterval(changeText, 3000)
 
 // circle skill-------------------------------------------------
+// const circles = document.querySelectorAll('.circle');
+// circles.forEach(elem=>{
+//     var dots = elem.getAttribute("data-dots");
+//     var marked = elem.getAttribute("data-percent");
+//     var percent = Math.floor(dots*marked/100);
+//     var points = "";
+//     var rotate = 360 / dots;
+
+//     for (let i = 0 ; i < dots ; i++) {
+//         points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+//     }
+//     elem.innerHTML = points;
+
+//     const pointsMarked = elem.querySelectorAll('.points');
+//     for(let i = 0; i<percent ; i++){
+//         pointsMarked[i].classList.add('marked')
+//     }
+// })
+// document.querySelectorAll('.skill-bar .bar span').forEach(span => {
+//         const targetWidth = span.getAttribute('data-width');
+//         span.style.width = '0';
+//         setTimeout(() => {
+//             span.style.width = targetWidth;
+//         }, 100);
+//     });
+
+//     // Circular skills
+//     const circles = document.querySelectorAll('.circle');
+//     circles.forEach(elem => {
+//         const dots = parseInt(elem.getAttribute("data-dots"));
+//         const marked = parseInt(elem.getAttribute("data-percent"));
+//         const percent = Math.floor(dots * marked / 100);
+//         const rotate = 360 / dots;
+
+//         let pointsHTML = "";
+//         for (let i = 0; i < dots; i++) {
+//             pointsHTML += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+//         }
+//         elem.innerHTML = pointsHTML;
+
+//         const pointsMarked = elem.querySelectorAll('.points');
+//         for (let i = 0; i < percent; i++) {
+//             pointsMarked[i].classList.add('marked');
+//         }
+//     });
+
+
+// Animate technical skill bars
+document.querySelectorAll('.skill-bar .bar span').forEach(span => {
+    const targetWidth = span.getAttribute('data-width');
+    span.style.width = '0';
+    setTimeout(() => {
+        span.style.width = targetWidth;
+    }, 100);
+});
+
+// Circular skills with smooth animation and text update
 const circles = document.querySelectorAll('.circle');
-circles.forEach(elem=>{
-    var dots = elem.getAttribute("data-dots");
-    var marked = elem.getAttribute("data-percent");
-    var percent = Math.floor(dots*marked/100);
-    var points = "";
-    var rotate = 360 / dots;
+circles.forEach(circle => {
+    const dots = parseInt(circle.getAttribute("data-dots"));
+    const percent = parseInt(circle.getAttribute("data-percent"));
+    const rotate = 360 / dots;
 
-    for (let i = 0 ; i < dots ; i++) {
-        points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+    // Generate points
+    let pointsHTML = "";
+    for (let i = 0; i < dots; i++) {
+        pointsHTML += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
     }
-    elem.innerHTML = points;
+    circle.innerHTML = pointsHTML;
 
-    const pointsMarked = elem.querySelectorAll('.points');
-    for(let i = 0; i<percent ; i++){
-        pointsMarked[i].classList.add('marked')
-    }
-})
+    const points = circle.querySelectorAll('.points');
+    const text = circle.nextElementSibling.querySelector('big'); // select percentage text
+    let current = 0;
+    const totalMarked = Math.floor(dots * percent / 100);
+    let currentPercent = 0;
+
+    const interval = setInterval(() => {
+        if (current >= totalMarked) {
+            clearInterval(interval);
+            text.textContent = percent + "%"; // final percentage
+            return;
+        }
+        points[current].classList.add('marked');
+        current++;
+        currentPercent = Math.floor((current / dots) * 100);
+        text.textContent = currentPercent + "%"; // update text as points fill
+    }, 20); // adjust speed
+});
 
 // mix it up protfolio section-------------------------------------------------->
 var mixer = mixitup('.portfolio-gallery');

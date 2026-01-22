@@ -303,6 +303,17 @@ section{
     filter: blur(50px);
 }
 
+
+.email-info a {
+    color: #fff;    /* or any color */
+    text-decoration: none;
+}
+
+.email-info a:hover {
+    text-decoration: underline;
+    color: #ffda79; /* hover color */
+}
+
 /* About Section CSS................................................. */
 .about{
    display: flex;
@@ -449,118 +460,254 @@ section{
 
 
 /* Skill Section---------------------------------- */
-.skills{
-    background: var(--secon-bg-color);
-}
-.skill-main{
-   width: 100%;
-   display: grid;
-   grid-template-columns: repeat(2,1fr);
-   grid-row-gap: 30px;
-   grid-column-gap: 50px; 
-}
-.skill-bar{
-    margin-bottom: 2.3rem;
+   .skills {
+            background: var(--secon-bg-color);
+            padding: 50px 20px;
+        }
 
-}
-.skill-main h3{
-    margin-bottom: 2rem;
-    font-size: var(--normal-font);
-    text-align: center;
-}
+        .skills .main-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.skill-left .skill-bar .info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-}
-.skill-left .skill-bar .bar{
-    width: 100%;
-    height: 10px;
-    background-color: var(--bg-color);
-    border-radius: 25px;
-    margin-top: 10px;
+        .skills .main-text span {
+            font-size: 1rem;
+            color: var(--hover-color);
+            letter-spacing: 2px;
+        }
+
+        .skills .main-text h2 {
+            font-size: 2rem;
+            margin-top: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Skill grid */
+        .skill-main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px 50px;
+        }
+
+        /* Technical Skills */
+        .skill-left h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .skill-bar {
+            margin-bottom: 25px;
+        }
+
+        .skill-bar .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+
+        .skill-bar .bar {
+            width: 100%;
+            height: 12px;
+            background-color: var(--bg-color);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-bar .bar span {
+            display: block;
+            width: 0;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background-color: var(--hover-color);
+            border-radius: 25px;
+            box-shadow: var(--neon-box-shadow);
+            transition: width 2s ease;
+        }
+
+        /* Professional Skills */
+        .skill-right h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .professional {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            justify-items: center;
+        }
+
+        .box {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .box .text {
+            position: absolute;
+            text-align: center;
+            color: #fff;
+        }
+
+        .box .text big {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .box .text small {
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* .circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .circle .points {
+            width: 2px;
+            height: 10px;
+            background-color: var(--bg-color);
+            position: absolute;
+            border-radius: 3px;
+            transform: rotate(calc(var(--i) * var(--rot))) translateY(-45px);
+        }
+
+        .points.marked {
+            background-color: var(--hover-color);
+            box-shadow: var(--neon-box-shadow);
+            transition: 0.3s;
+        } */
+
+/* 
+       .circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
     position: relative;
 }
-.skill-bar .bar span{
-    width: 50%;
-    height: 100%;
+
+.circle .points {
+    width: 4px;
+    height: 14px;
+    background-color: rgba(255,255,255,0.2);
     position: absolute;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    border-radius: 3px;
+    transform-origin: center -70px;
+    transform: rotate(calc(var(--i) * var(--rot))) translateY(-70px);
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.4;
+}
+
+.points.marked {
     background-color: var(--hover-color);
-    border-radius:  25px ;
-    box-shadow: var(--neon-box-shadow);
+    box-shadow: 0 0 8px var(--hover-color);
+    opacity: 1;
 }
 
-.skill-bar .bar .html{
-    width:80% ;
-    animation: html 2s;
-}
-.skill-bar .bar .css{
-    width:70% ;
-    animation: css 3s;
-}
-
-.skill-bar .bar .javascript{
-    width:40% ;
-    animation: javascript 4s;
-}
-
-.skill-bar .bar .cpp{
-    width:50% ;
-    animation: cpp 5s;
-}
-
-/* skill right------------------------------------------------- */
-.professional{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.box{
+.box {
+    width: 140px;
+    height: 140px;
     position: relative;
-    margin:10px 0 ;
-    flex: 1 1 15rem;
 }
-.box .text{
+
+.box .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    font-size: 1rem;
 }
 
-.box .text big{
-    font: 400;
-    letter-spacing: 1px;
+.box .text big {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.box .text small {
+    font-size: 0.85rem;
+    margin-top: 5px;
+} */
+.circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* Circular progress dots */
+.circle .points {
+    width: 4px;
+    height: 14px;
+    background-color: rgba(255,255,255,0.2);
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50% , -50%);
-}
-.box .text small{
-    display: block;
-    font-weight: 600;
-}
-.circle{
-    width: 100%;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.circle .points{
-    width: 2px;
-    height: 10px;
-    background-color: var(--bg-color);
-    position: absolute;
     border-radius: 3px;
-    transform: rotate(calc(var(--i)*var(--rot)))  translateY(-45px);
+    transform-origin: center -110px;
+    transform: rotate(calc(var(--i) * var(--rot))) translateY(-70px);
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.4;
 }
 
-.points.marked{
-    animation: glow 0.04s linear forwards;
-    animation-delay: calc(var(--i)*0.05s);
+.points.marked {
+    background-color: var(--hover-color);
+    box-shadow: 0 0 8px var(--hover-color);
+    opacity: 1;
 }
+
+/* Container */
+.box {
+    width: 140px;
+    height: 200px;    /* increased for spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Percentage text inside the circle */
+.box .text {
+    position: absolute;
+    top: 70px;       /* center of circle */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+.box .text big {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* Skill label under circle */
+.box small {
+    margin-top: 155px;   /* pushes it below circle */
+    font-size: 0.9rem;
+    color: #ddd;
+    text-align: center;
+}
+
 
 /* portfolio section------------------------------------------------------------------------------------- */
 
@@ -669,6 +816,73 @@ section{
     color: var(--secon-bg-color);
 }
 
+/* .link-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.link-box a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+} */
+.link-box {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Circle button style */
+.link-box a {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Outer glowing ring */
+.link-box a::before {
+  content: '';
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 3px solid var(--hover-color);
+  opacity: 0.9;
+  transition: 0.3s ease;
+}
+
+/* Icon style */
+.link-box a i {
+  font-size: 1.5rem;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+/* Hover effects */
+.link-box a:hover {
+  transform: scale(1.1);
+  background: var(--hover-color);
+}
+
+.link-box a:hover i {
+  color: #fff;
+}
+
+.link-box a:hover::before {
+  border-color: #fff;
+}
 
 /* Contact Section css--------------------------------------------------------------------------- */
 .contact{
